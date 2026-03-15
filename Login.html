@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beautiful Login</title>
+
+    <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #667eea, #764ba2, rgb(255, 0, 255));
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            width: 320px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            color: white;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .shake {
+            animation: shake 0.4s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-8px); }
+            100% { transform: translateX(0); }
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        button{
+
+width:100%;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+
+background:linear-gradient(135deg,#ff512f,#dd2476);
+color:white;
+
+font-size:16px;
+font-weight:bold;
+
+cursor:pointer;
+transition:all 0.3s ease;
+
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+
+}
+
+button:hover{
+
+background:linear-gradient(135deg,#dd2476,#ff512f);
+
+transform:translateY(-3px) scale(1.03);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+}
+
+button:active{
+transform:scale(0.98);
+}
+        .error-message {
+            color: #ffdddd;
+            background: rgba(255, 0, 0, 0.3);
+            padding: 8px;
+            border-radius: 5px;
+            display: none;
+            margin-top: 10px;
+        }
+a{
+
+display:inline-block;
+margin-top:15px;
+padding:8px 18px;
+
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
+
+color:white;
+
+background:linear-gradient(135deg,#36d1dc,#5b86e5);
+
+border-radius:25px;
+
+transition:0.3s;
+
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+
+}
+
+a:hover{
+
+background:linear-gradient(135deg,#5b86e5,#36d1dc);
+
+transform:translateY(-2px);
+
+box-shadow:0 6px 18px rgba(0,0,0,0.4);
+
+}
+
+    </style>
+</head>
+<body>
+
+<div class="login-box" id="loginBox">
+    <h2>Welcome Back</h2>
+    <form action="LoginServlet" method="post" autocomplete="off">
+     
+        <input type="text" name="username" placeholder="Enter Username" required autocomplete="off">
+        <input type="password" name="password" placeholder="Enter Password" required autocomplete="new-password">
+        
+        <button type="submit">Login</button>
+        <a href="index.html"> create a new user</a>
+    </form>
+
+    <div class="error-message" id="errorMsg">
+        Invalid Username or Password ❌
+    </div>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("error") === "1") {
+
+        // Show SweetAlert popup
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: 'Invalid Username or Password!',
+            confirmButtonColor: '#d33'
+        });
+
+        // Show error message inside box
+        document.getElementById("errorMsg").style.display = "block";
+
+        // Add shake animation
+        const box = document.getElementById("loginBox");
+        box.classList.add("shake");
+
+        // Remove shake after animation
+        setTimeout(() => {
+            box.classList.remove("shake");
+        }, 500);
+    }
+</script>
+
+</body>
+</html>

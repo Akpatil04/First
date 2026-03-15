@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Page</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg,#00c9ff,#92fe9d);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+form{
+    background: rgba(255, 255, 255, 0.2);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    width:300px;
+    transition:0.3s;
+    backdrop-filter: blur(10px);
+}
+
+form:hover{
+    transform:scale(1.03);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+    color:#444;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:2px solid #ddd;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#2575fc;
+    box-shadow:0 0 6px #2575fc;
+    outline:none;
+}
+
+input[type="submit"]{
+    background:#2575fc;
+    color:white;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+input[type="submit"]:hover{
+    background:#6a11cb;
+    transform:translateY(-2px);
+}
+
+a{
+    color:#2575fc;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    color:#6a11cb;
+    text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<form action="RegistrationServlet" method="post">
+
+<h2>Create Account</h2>
+
+<label>User id</label><br>
+<input type="number" name="userid" placeholder="Enter your user id" required><br><br>
+
+<label>Full Name</label><br>
+ <input type="text" name="fullname" placeholder="Enter your name" required><br><br>
+
+<label>Email</label><br>
+<input type="email" name="email" placeholder="Enter your email" required><br><br>
+
+<label>Phone</label><br>
+<input type="tel" name="phone" placeholder="Enter your phone number" required><br><br>
+
+<label>Password</label><br>
+<input type="password" name="password" placeholder="Enter password" required><br><br>
+
+<input type="submit" value="Register"><br><br>
+
+Already have an account? 
+<a href="Login.html">Login</a>
+
+</form>
+
+</body>
+</html>
